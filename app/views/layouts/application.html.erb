@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RemiFunnyMovies</title>
+    <title>Remi Funny Movies</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+
+    <%= favicon_link_tag asset_path('funny_movie.png') %>
 
   <body>
     <%= yield %>

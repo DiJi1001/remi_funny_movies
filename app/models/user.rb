@@ -1,11 +1,13 @@
 class User < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  EMAIL_MAX_LENGTH = 255
+  PASSWORD_MIN_LENGTH = 6
 
   attr_accessor :password
 
-  validates :email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX },
+  validates :email, presence: true, length: { maximum: EMAIL_MAX_LENGTH }, format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
-  validates :password, presence: true, length: { minimum: 6 }
+  validates :password, presence: true, length: { minimum: PASSWORD_MIN_LENGTH }
 
   before_save :downcase_email_and_encrypt_password
 

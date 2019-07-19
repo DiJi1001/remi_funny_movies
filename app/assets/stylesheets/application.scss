@@ -24,16 +24,21 @@ html, body {
 
 header {
   .size-title, .size-logo {
-    font-size: 2.5em;
+    font-size: 2.4em;
+  }
+  @include media-breakpoint-down(lg) {
+    .size-title, .size-logo {
+      font-size: 2rem;
+    }
   }
   @include media-breakpoint-down(md) {
     .size-title, .size-logo {
-      font-size: 2.2rem;
+      font-size: 1.8rem;
     }
   }
   @include media-breakpoint-down(sm) {
     .size-title, .size-logo {
-      font-size: 1.8rem;
+      font-size: 1.5rem;
     }
   }
   hr {

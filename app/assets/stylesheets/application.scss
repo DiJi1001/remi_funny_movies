@@ -19,15 +19,31 @@
 @import url('https://fonts.googleapis.com/css?family=Patrick+Hand&display=swap');
 
 html, body {
-  font-family: 'Patrick Hand', cursive;
+  font-family: 'Patrick Hand';
 }
 
 header {
-  .size-title {
+  .size-title, .size-logo {
     font-size: 2.5em;
+  }
+  @include media-breakpoint-down(md) {
+    .size-title, .size-logo {
+      font-size: 2.2rem;
+    }
+  }
+  @include media-breakpoint-down(sm) {
+    .size-title, .size-logo {
+      font-size: 1.8rem;
+    }
   }
   hr {
     border-top-width: 2px;
   }
 }
 
+@media (max-width: 575px) {
+  .btn-xs-block {
+    display: block;
+    width: 100%;
+  }
+}

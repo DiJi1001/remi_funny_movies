@@ -4,5 +4,7 @@ Rails.application.routes.draw do
 
   post '/login' => 'users#login'
   delete '/logout' => 'users#logout'
-  resources :movies, only: :index
+  get '/movies' => 'movies#index'
+  get 'movies/share' => 'movies#new'
+  post '/movies' => 'movies#create'
 end

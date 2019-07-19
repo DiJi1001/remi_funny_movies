@@ -1,0 +1,6 @@
+<div class="col-md-8 d-flex flex-column flex-sm-row justify-content-center justify-content-md-end mt-2 mt-md-0">
+  <span class="mr-sm-2 text-center">Welcome <%= current_user.email %></span>
+  <%= link_to I18n.t('movies.share_btn'), movies_share_path, class: "btn btn-sm btn-secondary mt-1 mt-sm-0 mr-sm-2" %>
+  <%= link_to I18n.t('users.logout_btn'), logout_path, method: :delete,
+    class: "btn btn-sm btn-secondary mt-1 mt-sm-0" %>
+</div>

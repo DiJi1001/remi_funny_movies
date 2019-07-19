@@ -42,7 +42,9 @@
 <% content_for :page_script do %>
   <script type="text/javascript">
     $(function() {
-      //
+      setTimeout(function() {
+          $('.alert').alert('close')
+      }, 3000);
     });
   </script>
 <% end %>

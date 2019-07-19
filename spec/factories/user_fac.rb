@@ -3,6 +3,6 @@ FactoryBot.define do
     sequence :email do |index|
       "eddie.redmayne_#{index}@gmail.com"
     end
-    password Faker::Internet.password(6, 20)
+    password { Faker::Internet.password(6, 20) }
   end
 end

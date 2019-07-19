@@ -1,16 +1,37 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Remi Funny Movies</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
     <%= favicon_link_tag asset_path('funny_movie.png') %>
-
   <body>
-    <%= yield %>
+    <div class="container">
+      <header class="sticky-top bg-white">
+        <div class="row align-items-center justify-content-between">
+          <div class="col-lg-4 text-center text-lg-left">
+            <%= icon('fa', 'home', class: 'fa-3x text-success')%>
+            <span class="size-title font-weight-bold">Funny Movies</span>
+          </div>
+          <div class="col-lg-8 d-flex justify-content-center justify-content-lg-end mt-2 mt-lg-0">
+            <%= form_with url: login_path, local: true, id: :login_form,
+            class: "login_form form-inline justify-content-end" do |form| %>
+              <%= form.text_field :email, class: "form-control mr-sm-1 mt-1 mt-sm-0", placeholder: "your email" %>
+              <%= form.password_field :password, class: "form-control mr-sm-1 mt-1 mt-sm-0", placeholder: "password" %>
+              <%= form.submit 'Login/Register', class: "btn btn-secondary mt-1 mt-sm-0" %>
+            <% end %>
+          </div>
+        </div>
+        <hr class="mt-1"/>
+      </header>
+
+      <%= yield %>
+    </div>
+
+    <%= yield :page_script %>
   </body>
 </html>

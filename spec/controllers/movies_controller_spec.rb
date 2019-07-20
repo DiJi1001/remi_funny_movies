@@ -13,7 +13,19 @@ RSpec.describe MoviesController do
       end
     end
 
-    xcontext 'when user has logged in'
+    context 'when user has logged in' do
+      let(:user) { create :user }
+
+      before do
+        session[:user_id] = user.id
+        get :new
+      end
+
+      it 'render the sharing movie page' do
+        expect(response).to have_http_status(:success)
+        expect(response).to render_template(:new)
+      end
+    end
   end
 
   describe 'POST: /movies' do

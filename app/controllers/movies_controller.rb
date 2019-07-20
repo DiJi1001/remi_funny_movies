@@ -9,5 +9,6 @@ class MoviesController < ApplicationController
   end
 
   def create
+    render 'new'
   end
 end

@@ -45,6 +45,8 @@ en:
     youtube_url: Youtube URL
     submit_btn: Share
     share_movie_title: Share a Youtube movie
+    sharing:
+      youtube_video_not_found: "Youtube video with id %{youtube_video_id} cannot be found"
   activerecord:
     errors:
       models:

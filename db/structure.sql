@@ -39,6 +39,41 @@ CREATE TABLE public.ar_internal_metadata (
 
 
 --
+-- Name: movies; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.movies (
+    id bigint NOT NULL,
+    user_id bigint NOT NULL,
+    video_id character varying NOT NULL,
+    shared_url character varying,
+    title character varying NOT NULL,
+    description character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: movies_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.movies_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: movies_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.movies_id_seq OWNED BY public.movies.id;
+
+
+--
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -80,6 +115,13 @@ ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
 
 
 --
+-- Name: movies id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.movies ALTER COLUMN id SET DEFAULT nextval('public.movies_id_seq'::regclass);
+
+
+--
 -- Name: users id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -92,6 +134,14 @@ ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_
 
 ALTER TABLE ONLY public.ar_internal_metadata
     ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: movies movies_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.movies
+    ADD CONSTRAINT movies_pkey PRIMARY KEY (id);
 
 
 --
@@ -111,10 +161,25 @@ ALTER TABLE ONLY public.users
 
 
 --
+-- Name: index_movies_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_movies_on_user_id ON public.movies USING btree (user_id);
+
+
+--
 -- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE UNIQUE INDEX index_users_on_email ON public.users USING btree (email);
+
+
+--
+-- Name: movies fk_rails_2c7f519372; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.movies
+    ADD CONSTRAINT fk_rails_2c7f519372 FOREIGN KEY (user_id) REFERENCES public.users(id);
 
 
 --
@@ -124,6 +189,7 @@ CREATE UNIQUE INDEX index_users_on_email ON public.users USING btree (email);
 SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
-('20190718012716');
+('20190718012716'),
+('20190720093232');
 
 

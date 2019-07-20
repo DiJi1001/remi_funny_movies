@@ -9,23 +9,15 @@ module Gateways::FetchYoutubeVideo
       if response.kind_of? Net::HTTPSuccess
         body = JSON.parse(response.body)
         video_info = body && body['items']&.first
-        raise YoutubeVideoNotFoundException.new(youtube_video_id) unless video_info
+        raise YoutubeVideoNotFoundException unless video_info
 
         snippet = video_info['snippet']
         [snippet['title'], snippet['description']]
       else
-        raise YoutubeVideoNotFoundException.new(youtube_video_id)
+        raise YoutubeVideoNotFoundException
       end
     end
   end
 
-  class YoutubeVideoNotFoundException < Exception
-    def initialize(youtube_video_id)
-      @youtube_video_id = youtube_video_id
-    end
-
-    def message
-      I18n.t('movies.sharing.youtube_video_not_found', youtube_video_id: @youtube_video_id)
-    end
-  end
+  class YoutubeVideoNotFoundException < Exception; end
 end

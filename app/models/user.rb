@@ -9,6 +9,8 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   validates :password, presence: true, length: { minimum: PASSWORD_MIN_LENGTH }
 
+  has_many :movies
+
   before_save :downcase_email_and_encrypt_password
 
   def right_password?(password)

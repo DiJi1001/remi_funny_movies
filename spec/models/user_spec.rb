@@ -24,6 +24,10 @@ describe User do
     end
   end
 
+  describe 'associations' do
+    specify { is_expected.to have_many(:movies) }
+  end
+
   describe 'callbacks' do
     context 'when user is created' do
       let(:email) { 'UPPER_MAIL@gmail.com' }

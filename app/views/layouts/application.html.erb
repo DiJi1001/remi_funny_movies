@@ -40,6 +40,12 @@
 
     <%= yield %>
 
-    <%= yield :page_script %>
+    <script type="text/javascript">
+      $(function() {
+        setTimeout(function() {
+            $('.alert').alert('close');
+        }, 3000);
+      });
+    </script>
   </body>
 </html>

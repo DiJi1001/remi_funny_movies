@@ -3,10 +3,7 @@ RSpec.describe Gateways::FetchYoutubeVideo do
     context 'when pass nil for youtube video id' do
       it 'raise youtube video not found exception' do
         expect { Gateways::FetchYoutubeVideo.execute(nil) }
-          .to raise_exception(
-            Gateways::FetchYoutubeVideo::YoutubeVideoNotFoundException,
-            I18n.t('movies.sharing.youtube_video_not_found', youtube_video_id: nil)
-          )
+          .to raise_exception(Gateways::FetchYoutubeVideo::YoutubeVideoNotFoundException)
       end
     end
 
@@ -15,10 +12,7 @@ RSpec.describe Gateways::FetchYoutubeVideo do
 
       it 'raise youtube video not found exception' do
         expect { Gateways::FetchYoutubeVideo.execute(invalid_video_id) }
-          .to raise_exception(
-            Gateways::FetchYoutubeVideo::YoutubeVideoNotFoundException,
-            I18n.t('movies.sharing.youtube_video_not_found', youtube_video_id: invalid_video_id)
-          )
+          .to raise_exception(Gateways::FetchYoutubeVideo::YoutubeVideoNotFoundException)
       end
     end
 
@@ -27,11 +21,9 @@ RSpec.describe Gateways::FetchYoutubeVideo do
 
       it 'return video name and description' do
         title, description = Gateways::FetchYoutubeVideo.execute(video_id)
-        binding.pry
         expect(title).to be_truthy
         expect(description).to be_truthy
       end
     end
   end
 end
-

@@ -1,5 +1,6 @@
 RSpec.describe MoviesController do
-  xdescribe 'GET: /movies' do
+  describe 'GET: /movies' do
+    it "is a pending example"
   end
 
   describe 'GET: /movies/share' do
@@ -39,6 +40,8 @@ RSpec.describe MoviesController do
       end
     end
 
-    xcontext 'when user has logged in'
+    context 'when user has logged in' do
+      it "is a pending example"
+    end
   end
 end

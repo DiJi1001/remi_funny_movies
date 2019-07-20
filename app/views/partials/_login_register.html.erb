@@ -2,9 +2,9 @@
   <%= form_with url: login_path, local: true, id: :login_form,
   class: "login_form form-inline justify-content-end" do |form| %>
     <%= form.text_field :email, class: "form-control form-control-sm mr-sm-2 mt-1 mt-sm-0",
-      placeholder: I18n.t('users.login.email_placeholder'), value: @prev_email %>
+      placeholder: I18n.t('users.login.email_placeholder'), value: @prev_email, required: :true %>
     <%= form.password_field :password, class: "form-control form-control-sm mr-sm-2 mt-1 mt-sm-0",
-      placeholder: I18n.t('users.login.password_placeholder') %>
+      placeholder: I18n.t('users.login.password_placeholder'), required: :true %>
     <%= form.submit I18n.t('users.login.submit_btn'), class: "btn btn-sm btn-secondary btn-xs-block mt-1 mt-sm-0" %>
   <% end %>
 </div>

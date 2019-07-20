@@ -38,7 +38,7 @@ en:
       login_successfully: You have successfully logged in
       incorrect_password: The password is incorrect
       register_login_successfully: You have successfully registered and logged in
-      required_login: You need to login first!
+      required_login: You need to login first
     logout_btn: Logout
   movies:
     share_btn: Share a movie
@@ -46,7 +46,8 @@ en:
     submit_btn: Share
     share_movie_title: Share a Youtube movie
     sharing:
-      youtube_video_not_found: "Youtube video with id %{youtube_video_id} cannot be found"
+      youtube_video_not_found: The Youtube video cannot be found
+      share_successfully: Your Youtube video has been shared successfully
   activerecord:
     errors:
       models:

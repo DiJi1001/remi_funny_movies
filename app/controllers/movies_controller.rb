@@ -5,10 +5,16 @@ class MoviesController < ApplicationController
     @prev_email = params[:prev_email]
   end
 
-  def new
-  end
+  def new; end
 
   def create
-    render 'new'
+    service = Movies::Share.new(current_user, params[:youtube_url])
+    if service.execute
+      flash[:success] = I18n.t('movies.sharing.share_successfully')
+      redirect_to root_url
+    else
+      flash.now[:danger] = service.error_message
+      render 'new'
+    end
   end
 end

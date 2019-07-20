@@ -24,13 +24,15 @@
       <% end %>
       <div class="row align-items-center justify-content-between">
         <div class="col-md-4 text-center text-md-left  mt-2 mt-md-0">
-          <%= icon('fa', 'home', class: 'text-success size-logo')%>
-          <span class="size-title font-weight-bold text-danger">Funny Movies</span>
+          <a class="home-page" href=<%= root_path %>>
+            <%= icon('fa', 'home', class: 'text-success size-logo')%>
+            <span class="size-title font-weight-bold text-danger">Funny Movies</span>
+          </a>
         </div>
         <% if logged_in? %>
           <%= render "partials/welcome" %>
         <% else %>
-          <%= render "partials/login_register", locals: {email: @email} %>
+          <%= render "partials/login_register", locals: {prev_email: @prev_email} %>
         <% end %>
       </div>
       <hr class="my-1"/>

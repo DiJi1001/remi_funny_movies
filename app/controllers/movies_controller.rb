@@ -1,6 +1,6 @@
 class MoviesController < ApplicationController
   def index
-    @email = params[:email]
+    @prev_email = params[:prev_email]
   end
 
   def new

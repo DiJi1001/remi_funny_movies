@@ -8,7 +8,7 @@ class UsersController < ApplicationController
         redirect_to root_url
       else
         flash[:danger] = I18n.t('users.login.incorrect_password')
-        redirect_to root_url(email: params[:email])
+        redirect_to root_url(prev_email: params[:email])
       end
     else
       user = User.new(email: params[:email], password: params[:password])
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
         user.errors.messages.values.flatten.each do |error_msg|
           flash[:danger] << error_msg
         end
-        redirect_to root_url(email: params[:email])
+        redirect_to root_url(prev_email: params[:email])
       end
     end
   end

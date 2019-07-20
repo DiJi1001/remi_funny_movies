@@ -1,1 +1,21 @@
-<h1>Share a movie</h1>
+<div class="container share-movie-container">
+  <div class="row min-vh-50 d-flex flex-column justify-content-center align-self-center align-items-center m-1 m-sm-0">
+    <div class="col-sm-10 col-md-8 col-lg-6 pt-sm-5 pb-sm-4 pr-sm-5 pt-2 border position-relative">
+      <p class="title position-absolute m-0 inline-block bg-white"><%= I18n.t('movies.share_movie_title') %></p>
+      <%= form_with url: movies_path, local: true, id: :share_movie_form, class: "share_movie_form" do |form| %>
+        <div class="form-group row">
+          <%= form.label :youtube_url, "#{I18n.t('movies.youtube_url')}:", class: 'col-sm-3 col-form-label pr-sm-0' %>
+          <div class="col-sm-9 pl-sm-0">
+            <%= form.text_field :youtube_url, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-9 offset-sm-3 pl-sm-0">
+            <%= form.submit I18n.t('movies.submit_btn'), class: 'btn btn-block btn-primary' %>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>

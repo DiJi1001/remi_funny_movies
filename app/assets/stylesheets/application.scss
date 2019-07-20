@@ -49,9 +49,19 @@ header {
   }
 }
 
+.share-movie-container {
+  .title {
+    top: -15px;
+  }
+}
+
 @media (max-width: 575px) {
   .btn-xs-block {
     display: block;
     width: 100%;
   }
+}
+
+.min-vh-50 {
+  min-height: 50vh !important;
 }

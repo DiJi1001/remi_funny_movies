@@ -42,6 +42,9 @@ en:
     logout_btn: Logout
   movies:
     share_btn: Share a movie
+    youtube_url: Youtube URL
+    submit_btn: Share
+    share_movie_title: Share a Youtube movie
   activerecord:
     errors:
       models:

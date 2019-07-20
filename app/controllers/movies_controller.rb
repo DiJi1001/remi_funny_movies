@@ -1,4 +1,6 @@
 class MoviesController < ApplicationController
+  before_action :authenticate_user!, only: %i[new create]
+
   def index
     @prev_email = params[:prev_email]
   end

@@ -48,6 +48,8 @@ en:
     sharing:
       youtube_video_not_found: The Youtube video cannot be found
       share_successfully: Your Youtube video has been shared successfully
+    shared_by: Share by
+    description: Description
   activerecord:
     errors:
       models:

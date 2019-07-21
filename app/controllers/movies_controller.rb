@@ -3,6 +3,7 @@ class MoviesController < ApplicationController
 
   def index
     @prev_email = params[:prev_email]
+    @movies = Movies::Fetch.new(params[:page]).execute
   end
 
   def new; end

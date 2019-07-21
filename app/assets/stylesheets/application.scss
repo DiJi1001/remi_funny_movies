@@ -55,6 +55,45 @@ header {
   }
 }
 
+.movies-container {
+  .movie-item {
+    .movie-title {
+      font-size: 1.1rem;
+    }
+    .movie-description {
+      font-size: 0.9rem;
+      white-space: pre-wrap;
+    }
+  }
+
+  .movie-description-wrapper {
+    .collapse-control {
+      font-size: 0.9rem;
+    }
+  }
+
+  .movie-description-wrapper p.collapse:not(.show) {
+      height: 63px !important;
+      overflow: hidden;
+
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+  }
+
+  .movie-description-wrapper p.collapsing {
+      min-height: 63px !important;
+  }
+
+  .movie-description-wrapper a.collapsed:after  {
+      content: 'Show More';
+  }
+
+  .movie-description-wrapper a:not(.collapsed):after {
+      content: 'Show Less';
+  }
+}
+
 @media (max-width: 575px) {
   .btn-xs-block {
     display: block;

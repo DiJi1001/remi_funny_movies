@@ -1,3 +1,5 @@
+require 'net/http'
+
 module Gateways::FetchYoutubeVideo
   GOOGLE_API_KEY = ENV.fetch('GOOGLE_API_KEY') { 'AIzaSyDiRsLcRPYkGPx0R2WEncsxvyeXMjjuoE0' }
   GOOGLE_API_URL = "https://www.googleapis.com/youtube/v3/videos?part=snippet&key=#{GOOGLE_API_KEY}"

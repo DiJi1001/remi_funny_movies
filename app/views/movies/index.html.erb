@@ -11,11 +11,13 @@
         <div class="d-flex flex-column justify-content-start">
           <h5 class="text-danger m-0 font-weight-bold movie-title"><%= movie.title %></h5>
           <p class="m-0"><%= "#{I18n.t('movies.shared_by')}: #{movie.user.email}" %></p>
-          <p class="m-0"><%= "#{I18n.t('movies.description')}:" %></p>
-          <div class="movie-description-wrapper">
-            <p class="collapse m-0 movie-description" id=<%= "collapse-description-#{index}" %>><%= movie.description %></p>
-            <a class="collapsed collapse-control" data-toggle="collapse" href=<%= "#collapse-description-#{index}" %> aria-expanded="false" aria-controls=<%= "collapse-description-#{index}" %>></a>
-          </div>
+          <% if movie.description.present? %>
+            <p class="m-0"><%= "#{I18n.t('movies.description')}:" %></p>
+            <div class="movie-description-wrapper">
+              <p class="collapse m-0 movie-description" id=<%= "collapse-description-#{index}" %>><%= movie.description %></p>
+              <a class="collapsed collapse-control" data-toggle="collapse" href=<%= "#collapse-description-#{index}" %> aria-expanded="false" aria-controls=<%= "collapse-description-#{index}" %>></a>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>

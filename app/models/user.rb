@@ -10,6 +10,7 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: PASSWORD_MIN_LENGTH }
 
   has_many :movies
+  has_many :movie_comments
 
   before_save :downcase_email_and_encrypt_password
 

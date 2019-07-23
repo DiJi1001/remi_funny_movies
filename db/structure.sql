@@ -39,6 +39,39 @@ CREATE TABLE public.ar_internal_metadata (
 
 
 --
+-- Name: movie_comments; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.movie_comments (
+    id bigint NOT NULL,
+    movie_id bigint NOT NULL,
+    user_id bigint NOT NULL,
+    comment character varying NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: movie_comments_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.movie_comments_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: movie_comments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.movie_comments_id_seq OWNED BY public.movie_comments.id;
+
+
+--
 -- Name: movies; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -115,6 +148,13 @@ ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
 
 
 --
+-- Name: movie_comments id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.movie_comments ALTER COLUMN id SET DEFAULT nextval('public.movie_comments_id_seq'::regclass);
+
+
+--
 -- Name: movies id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -134,6 +174,14 @@ ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_
 
 ALTER TABLE ONLY public.ar_internal_metadata
     ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: movie_comments movie_comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.movie_comments
+    ADD CONSTRAINT movie_comments_pkey PRIMARY KEY (id);
 
 
 --
@@ -161,6 +209,20 @@ ALTER TABLE ONLY public.users
 
 
 --
+-- Name: index_movie_comments_on_movie_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_movie_comments_on_movie_id ON public.movie_comments USING btree (movie_id);
+
+
+--
+-- Name: index_movie_comments_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_movie_comments_on_user_id ON public.movie_comments USING btree (user_id);
+
+
+--
 -- Name: index_movies_on_user_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -175,11 +237,27 @@ CREATE UNIQUE INDEX index_users_on_email ON public.users USING btree (email);
 
 
 --
+-- Name: movie_comments fk_rails_0f7e0e3979; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.movie_comments
+    ADD CONSTRAINT fk_rails_0f7e0e3979 FOREIGN KEY (movie_id) REFERENCES public.movies(id);
+
+
+--
 -- Name: movies fk_rails_2c7f519372; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.movies
     ADD CONSTRAINT fk_rails_2c7f519372 FOREIGN KEY (user_id) REFERENCES public.users(id);
+
+
+--
+-- Name: movie_comments fk_rails_6a3839bb25; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.movie_comments
+    ADD CONSTRAINT fk_rails_6a3839bb25 FOREIGN KEY (user_id) REFERENCES public.users(id);
 
 
 --
@@ -190,6 +268,7 @@ SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
 ('20190718012716'),
-('20190720093232');
+('20190720093232'),
+('20190723093917');
 
 

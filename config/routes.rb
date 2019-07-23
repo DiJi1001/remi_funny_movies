@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   get '/movies' => 'movies#index'
   get 'movies/share' => 'movies#new'
   post '/movies' => 'movies#create'
+  post '/movies/comemnt' => 'movie_comments#create'
 end

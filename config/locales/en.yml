@@ -50,6 +50,10 @@ en:
       share_successfully: Your Youtube video has been shared successfully
     shared_by: Share by
     description: Description
+  movie_comments:
+    created_successfully: You have successfully posted a comment.
+    submit_btn: Comment
+    cancel_btn: Cancel
   activerecord:
     errors:
       models:

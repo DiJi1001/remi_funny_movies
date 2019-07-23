@@ -18,6 +18,21 @@
               <a class="collapsed collapse-control" data-toggle="collapse" href=<%= "#collapse-description-#{index}" %> aria-expanded="false" aria-controls=<%= "collapse-description-#{index}" %>></a>
             </div>
           <% end %>
+          <div>
+            <%= form_with url: movies_comemnt_path, local: true, id: :create_movie_comment_form do |form| %>
+              <input type="hidden" name="movie_id" value=<%= movie.id %>>
+              <div class="form-group row mt-2 mb-1">
+                <div class="col">
+                  <%= form.text_area :comment, class: 'form-control', required: :true %>
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col text-right">
+                  <%= form.submit I18n.t('movie_comments.submit_btn'), class: 'btn btn-primary' %>
+                </div>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>

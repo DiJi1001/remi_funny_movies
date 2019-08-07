@@ -1,4 +1,4 @@
-RSpec.describe UsersController do
+describe UsersController do
   describe 'POST: /login' do
     let(:email) { 'eddie.redmayne@gmail.com' }
     let(:password) { Faker::Internet.password(6, 20) }
